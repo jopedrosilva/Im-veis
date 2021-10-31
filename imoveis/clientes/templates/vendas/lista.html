@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Lista de Vendas</h1>
+        <a id="add-link" href="newvenda/">
+            <div class="col-2 add-div">
+                <i class="fas fa-plus"></i>Adicionar Venda
+            </div>
+        </a>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{ message }}</li>                
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <ul class="Lista-Vendas">
+            {% for venda in vendas %}
+            <li style="list-style: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <span>{{venda.imovel}}</span>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Cliente: {{venda.cliente}}</h5>
+                      <p class="card-text">Localização: {{venda.rua}}, {{venda.cidade}}, {{venda.estado}}</p>
+                      <p class="card-text">Preço: R$ {{venda.valor}}, Comissão: 5%</p>
+                      <a href="/venda/{{venda.id}}" class="btn btn-primary">Resumo da Venda</a>
+                    </div>
+                  </div>
+            </li>
+            {% endfor %}
+        </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if vendas.has_previous %}
+                <a href="?page={{ vendas.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+
+            {% if vendas.paginator.num_pages %}
+            <span class="current">
+                {{ vendas.number }} de {{ vendas.paginator.num_pages }}
+            </span>
+            {% endif %}
+
+            {% if vendas.has_next %}
+                <a href="?page={{ vendas.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+    </div>
+{% endblock %}

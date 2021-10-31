@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <div class="card">
+            <div class="card-header">
+                Resumo das Informações do Cliente
+            </div>
+            <div class="card-body">
+                <p class="card-text"><b>Nome:</b> {{cliente.nome}}</p>
+                <p class="card-text"><b>CPF:</b> {{cliente.cpf}}</p>
+                <p class="card-text"><b>E-mail:</b> {{cliente.email}}</p>
+                <p class="card-text"><b>Número de Telefone:</b> {{cliente.numero}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

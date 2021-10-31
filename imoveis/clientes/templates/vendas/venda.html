@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <div class="card">
+            <div class="card-header">
+                Resumo da Venda
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Imóvel: {{venda.imovel}}</h5>
+                <p class="card-text"><b>Localização:</b> {{venda.rua}}, {{venda.cidade}}, {{venda.estado}}</p>
+                <p class="card-text"><b>Preço:</b> R$ {{venda.valor}}, <b>Comissão:</b> 5%</p>
+                <p class="card-text"><b>Forma de Pagamento:</b> {{venda.pagamento}}</p>
+                <p class="card-text"><b>Cliente:</b> {{venda.cliente}}</p>
+                <p class="card-text"><b>Corretor:</b> {{venda.idCorretor}}</p>
+                <p class="card-text"><b>Data da compra:</b> {{venda.created_at}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
